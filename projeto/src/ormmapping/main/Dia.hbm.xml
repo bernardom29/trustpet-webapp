@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: bernardo(Universidade do Minho)
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="main.Dia" table="Dia" lazy="false">
+		<id name="id" column="Id" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="dia" column="Dia" type="integer" length="10" not-null="true" lazy="false"/>
+		<set name="ORM_Horas" table="Dia_Hora" lazy="true" cascade="save-update,lock">
+			<key column="DiaId" not-null="true"/>
+			<many-to-many column="HoraHora" class="main.Hora">
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
